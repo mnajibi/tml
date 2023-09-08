@@ -7,4 +7,7 @@ tml is a simple command-line tool that converts .txt files into .html format. Th
 # Installation
 
 To install tml, simply clone this repository to your local machine.
+
+``
 chmod +x main.py
+``
