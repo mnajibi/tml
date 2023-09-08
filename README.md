@@ -30,15 +30,15 @@ This will produce a corresponding .html file inside the `tml` directory.
 
 # Command Options:
 
-`--version` or `-v`: Display the tool's version.
-`--path`: Specify the path to a `.txt` file or a directory containing multiple .txt files. If a directory is provided, `tml` will recursively process all `.txt` files within.
+*`--version` or `-v`: Display the tool's version.
+*`--path`: Specify the path to a `.txt` file or a directory containing multiple .txt files. If a directory is provided, `tml` will recursively process all `.txt` files within.
 
 # Features
 
-📄 Converts single or multiple `.txt` files to `.html`.
-🖋 Automatic paragraph wrapping in `<p>...</p>` tags.
-📁 Outputs to a `tml` directory.
-🔄 Overwrites existing `tml` directory to ensure it only contains the most recent outputs.
+* 📄 Converts single or multiple `.txt` files to `.html`.
+* 🖋 Automatic paragraph wrapping in `<p>...</p>` tags.
+* 📁 Outputs to a `tml` directory.
+* 🔄 Overwrites existing `tml` directory to ensure it only contains the most recent outputs.
 
 
 # Contributing
@@ -47,4 +47,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 # License
 
-MIT
+[MIT](https://choosealicense.com/licenses/mit/)
