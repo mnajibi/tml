@@ -9,7 +9,7 @@
 To install `tml`, simply clone this repository to your local machine.
 
 ``
-git clone <repository-url>
+git clone https://github.com/mnajibi/tml.git
 cd tml
 ``
 
