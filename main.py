@@ -27,7 +27,7 @@ def create_html_from_txt(filepath):
 </body>
 </html>"""
 
-    output_dir = './tml'
+    output_dir = './tml/examples'
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -56,8 +56,8 @@ def main():
     if os.path.isfile(args.path) and args.path.endswith('.txt'):
         create_html_from_txt(args.path)
     elif os.path.isdir(args.path):
-        if os.path.exists('./tml'):
-            shutil.rmtree('./tml')
+        if os.path.exists('./tml/examples'):
+            shutil.rmtree('./tml/examples')
         for root, dirs, files in os.walk(args.path):
             for file in files:
                 if file.endswith('.txt'):
