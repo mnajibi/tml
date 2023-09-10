@@ -47,4 +47,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 # License
 
-[GNU](https://github.com/mnajibi/tml/blob/main/LICENSE)
+[MIT](https://github.com/mnajibi/tml/blob/main/LICENSE)
