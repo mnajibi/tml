@@ -5,29 +5,39 @@ import os
 import shutil
 
 def process_file_content(content):
-    paragraphs = content.split("\n\n")
-    html_paragraphs = [f"<p>{p.strip()}</p>" for p in paragraphs if p.strip()]
-    return "\n".join(html_paragraphs)
+    lines = content.split("\n")
+    if len(lines) > 2 and lines[1] == "" and lines[2] == "":
+        title = lines[0].strip()
+        body_paragraphs = "\n".join(lines[3:]).split("\n\n")
+    else:
+        title = None
+        body_paragraphs = content.split("\n\n")
 
-def create_html_from_txt(filepath):
+    html_paragraphs = [f"<p>{p.strip()}</p>" for p in body_paragraphs if p.strip()]
+    return title, "\n".join(html_paragraphs)
+
+   
+def create_html_from_txt(filepath, output_dir='./tml/examples'):
     with open(filepath, 'r') as f:
         content = f.read()
 
-    body_content = process_file_content(content)
+    title, body_content = process_file_content(content)
+
+    title_element = title if title else os.path.basename(filepath)
+    h1_element = f"<h1>{title}</h1>\n" if title else ""
 
     html_content = f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{os.path.basename(filepath)}</title>
+  <title>{title_element}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  {body_content}
+  {h1_element}{body_content}
 </body>
 </html>"""
 
-    output_dir = './tml/examples'
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -35,10 +45,13 @@ def create_html_from_txt(filepath):
     with open(output_file, 'w') as f:
         f.write(html_content)
 
+
 def main():
     parser = argparse.ArgumentParser(description='Process .txt files to .html')
     parser.add_argument('path', nargs='?', help='path to the file or folder to be processed')
     parser.add_argument('--version', '-v', action='store_true', help='print the tool\'s name and version')
+    parser.add_argument('--output', '-o', default='./tml/examples', help='Specify a different output directory')
+
 
     args = parser.parse_args()
 
@@ -54,14 +67,15 @@ def main():
         return
 
     if os.path.isfile(args.path) and args.path.endswith('.txt'):
-        create_html_from_txt(args.path)
+        create_html_from_txt(args.path, args.output)
     elif os.path.isdir(args.path):
-        if os.path.exists('./tml/examples'):
-            shutil.rmtree('./tml/examples')
+        if os.path.exists(args.output):
+            shutil.rmtree(args.output)
         for root, dirs, files in os.walk(args.path):
             for file in files:
                 if file.endswith('.txt'):
-                    create_html_from_txt(os.path.join(root, file))
+                     create_html_from_txt(os.path.join(root, file), args.output)  # pass output directory here
+
 
 if __name__ == '__main__':
     main()
