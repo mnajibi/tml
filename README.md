@@ -8,29 +8,29 @@
 
 To install `tml`, simply clone this repository to your local machine.
 
-``
+`
 git clone https://github.com/mnajibi/tml.git
 cd tml
-``
+`
 
 Ensure `main.py is` executable:
 
-``
+`
 chmod +x main.py
-``
+`
 ## Usage
 
 To convert a `.txt` file to `.html`:
 
-``
+`
 ./main.py <path-to-txt-file>
-``
+`
 
 To specify a different output directory:
 
-``
+`
 ./main.py <path-to-txt-file> --output <path-to-output-directory>
-``
+`
 
 By default, if no output directory is specified, the `.html` files will be saved inside the `tml/examples` directory.
 
