@@ -26,12 +26,13 @@ def create_html_from_txt(filepath, output_dir='./tml/examples'):
     title_element = title if title else os.path.basename(filepath)
     h1_element = f"<h1>{title}</h1>\n" if title else ""
 
-    html_content = f"""<!doctype html>
+    html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>{title_element}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"/>
 </head>
 <body>
   {h1_element}{body_content}
