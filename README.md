@@ -8,37 +8,38 @@
 
 To install `tml`, simply clone this repository to your local machine.
 
-`
+```
 git clone https://github.com/mnajibi/tml.git
 cd tml
-`
+```
 
 Ensure `main.py is` executable:
 
-`
+```
 chmod +x main.py
-`
+```
 ## Usage
 
 To convert a `.txt` file to `.html`:
 
-`
+```
 ./main.py <path-to-txt-file>
-`
+```
 
 To specify a different output directory:
 
-`
+```
 ./main.py <path-to-txt-file> --output <path-to-output-directory>
-`
+```
 
 By default, if no output directory is specified, the `.html` files will be saved inside the `tml/examples` directory.
 
 ## Command Options:
-
-* `--version` or `-v`: Display the tool's version.
-* `path`: Specify the path to a `.txt` file or a directory containing multiple .txt files. If a directory is provided, `tml` will recursively process all `.txt` files within.
-* `--output` or `-o`: Specify a custom output directory. The tool will create the directory if it does not exist.
+| Options | Description |
+| --- | --- |
+| `--version` or `-v` | Display the tool's version. |
+| `path` | Specify the path to a `.txt` file or a directory containing multiple .txt files. If a directory is provided, `tml` will recursively process all `.txt` files within. |
+| `--output` or `-o` | Specify a custom output directory. The tool will create the directory if it does not exist. |
 
 ## Features
 
