@@ -62,6 +62,7 @@ def main():
 
     if not args.path:
         parser.error("the following arguments are required: path")
+        return
 
     if not os.path.exists(args.path):
         print(f"Error: {args.path} does not exist.")
