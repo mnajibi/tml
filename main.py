@@ -3,15 +3,16 @@
 import argparse
 import os
 import shutil
+import re
 
 def process_file_content(content):
     lines = content.split("\n")
     if len(lines) > 2 and lines[1] == "" and lines[2] == "":
         title = lines[0].strip()
-        body_paragraphs = "\n".join(lines[3:]).split("\n\n")
+        body_paragraphs = re.split(r"\r?\n\r?\n", "\n".join(lines[3:]))
     else:
         title = None
-        body_paragraphs = content.split("\n\n")
+        body_paragraphs = re.split(r"\r?\n\r?\n", content)
 
     html_paragraphs = [f"<p>{p.strip()}</p>" for p in body_paragraphs if p.strip()]
     return title, "\n".join(html_paragraphs)
