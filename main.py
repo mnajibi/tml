@@ -17,6 +17,9 @@ def process_file_content(content):
     html_paragraphs = [f"<p>{p.strip()}</p>" for p in body_paragraphs if p.strip()]
     return title, "\n".join(html_paragraphs)
 
+def create_html_from_md(filepath,output_dir='./tml/examples'):
+    print("md function called")
+    pass
    
 def create_html_from_txt(filepath, output_dir='./tml/examples'):
     with open(filepath, 'r') as f:
@@ -71,6 +74,8 @@ def main():
 
     if os.path.isfile(args.path) and args.path.endswith('.txt'):
         create_html_from_txt(args.path, args.output)
+    elif os.path.isfile(args.path) and args.path.endswith('.md'):
+        create_html_from_md(args.path, args.output)
     elif os.path.isdir(args.path):
         if os.path.exists(args.output):
             shutil.rmtree(args.output)
@@ -79,7 +84,7 @@ def main():
                 if file.endswith('.txt'):
                      create_html_from_txt(os.path.join(root, file), args.output)  # pass output directory here
                 elif file.endswith('.md'):
-                    pass
+                     create_html_from_md(os.path.join(root, file), args.output)
 
 
 if __name__ == '__main__':
