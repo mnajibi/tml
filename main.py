@@ -78,6 +78,8 @@ def main():
             for file in files:
                 if file.endswith('.txt'):
                      create_html_from_txt(os.path.join(root, file), args.output)  # pass output directory here
+                elif file.endswith('.md'):
+                    pass
 
 
 if __name__ == '__main__':
