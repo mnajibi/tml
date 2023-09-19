@@ -17,6 +17,71 @@ def process_file_content(content):
     html_paragraphs = [f"<p>{p.strip()}</p>" for p in body_paragraphs if p.strip()]
     return title, "\n".join(html_paragraphs)
 
+def create_html_from_md(filepath, output_dir='./html/examples'):
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Read the Markdown content from the input file
+    with open(filepath, 'r', encoding='utf-8') as md_file:
+        markdown_content = md_file.read()
+
+    # Split the Markdown content into lines
+    lines = markdown_content.split('\n')
+
+    # Initialize an empty HTML content string
+    html_body_content = ""
+    current_paragraph=[]
+
+    for line in lines:
+        if line.startswith('# '):
+            # Close any open paragraph
+            if current_paragraph:
+                html_body_content += '<p>' + ' '.join(current_paragraph) + '</p>\n'
+                current_paragraph = []
+            # Add the heading
+            html_body_content += f'<h1>{line[2:]}</h1>\n'
+        elif line.startswith('## '):
+            if current_paragraph:
+                html_body_content += '<p>' + ' '.join(current_paragraph) + '</p>\n'
+                current_paragraph = []
+            html_body_content += f'<h2>{line[3:]}</h2>\n'
+        elif line.startswith('### '):
+            if current_paragraph:
+                html_body_content += '<p>' + ' '.join(current_paragraph) + '</p>\n'
+                current_paragraph = []
+            html_body_content += f'<h3>{line[4:]}</h3>\n'
+        elif line.strip():
+            # Append non-empty lines to the current paragraph
+            current_paragraph.append(line)
+        else:
+            # If it's an empty line, close the current paragraph (if any)
+            if current_paragraph:
+                html_body_content += '<p>' + ' '.join(current_paragraph) + '</p>\n'
+                current_paragraph = []
+
+    # Close any remaining open paragraph
+    if current_paragraph:
+        html_body_content += '<p>' + ' '.join(current_paragraph) + '</p>\n'
+
+    html_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"/>
+</head>
+<body>
+  {html_body_content}
+</body>
+</html>"""
+
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    output_file = os.path.join(output_dir, os.path.basename(filepath).replace('.md', '.html'))
+    with open(output_file, 'w') as f:
+        f.write(html_content)
+
    
 def create_html_from_txt(filepath, output_dir='./tml/examples'):
     with open(filepath, 'r') as f:
@@ -71,6 +136,8 @@ def main():
 
     if os.path.isfile(args.path) and args.path.endswith('.txt'):
         create_html_from_txt(args.path, args.output)
+    elif os.path.isfile(args.path) and args.path.endswith('.md'):
+        create_html_from_md(args.path, args.output)
     elif os.path.isdir(args.path):
         if os.path.exists(args.output):
             shutil.rmtree(args.output)
@@ -78,6 +145,8 @@ def main():
             for file in files:
                 if file.endswith('.txt'):
                      create_html_from_txt(os.path.join(root, file), args.output)  # pass output directory here
+                elif file.endswith('.md'):
+                     create_html_from_md(os.path.join(root, file), args.output)
 
 
 if __name__ == '__main__':
