@@ -123,7 +123,7 @@ def main():
     args = parser.parse_args()
 
     if args.version:
-        print("tml Tool Version 1.0.0")
+        print("tml Tool Version 0.0.2")
         return
 
     if not args.path:
