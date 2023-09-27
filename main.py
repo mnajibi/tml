@@ -17,7 +17,7 @@ def process_file_content(content):
     html_paragraphs = [f"<p>{p.strip()}</p>" for p in body_paragraphs if p.strip()]
     return title, "\n".join(html_paragraphs)
 
-def create_html_from_md(filepath, lang='en-CA',output_dir='./html/examples'):
+def create_html_from_md(filepath, output_dir='./html/examples'):
     os.makedirs(output_dir, exist_ok=True)
 
     # Read the Markdown content from the input file
@@ -63,7 +63,7 @@ def create_html_from_md(filepath, lang='en-CA',output_dir='./html/examples'):
         html_body_content += '<p>' + ' '.join(current_paragraph) + '</p>\n'
 
     html_content = f"""<!DOCTYPE html>
-<html lang="{lang}">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Document</title>
@@ -83,7 +83,7 @@ def create_html_from_md(filepath, lang='en-CA',output_dir='./html/examples'):
         f.write(html_content)
 
    
-def create_html_from_txt(filepath, lang='en-CA' , output_dir='./tml/examples'):
+def create_html_from_txt(filepath, output_dir='./tml/examples'):
     with open(filepath, 'r') as f:
         content = f.read()
 
@@ -93,7 +93,7 @@ def create_html_from_txt(filepath, lang='en-CA' , output_dir='./tml/examples'):
     h1_element = f"<h1>{title}</h1>\n" if title else ""
 
     html_content = f"""<!DOCTYPE html>
-<html lang="{lang}">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>{title_element}</title>
@@ -114,11 +114,11 @@ def create_html_from_txt(filepath, lang='en-CA' , output_dir='./tml/examples'):
 
 
 def main():
+ try: 
     parser = argparse.ArgumentParser(description='Process .txt files to .html')
     parser.add_argument('path', nargs='?', help='path to the file or folder to be processed')
     parser.add_argument('--version', '-v', action='store_true', help='print the tool\'s name and version')
     parser.add_argument('--output', '-o', default='./tml/examples', help='Specify a different output directory')
-    parser.add_argument('--lang', '-l', default='en-CA', help='Specify the language for the lang attribute in the HTML document')
 
  
 
@@ -126,20 +126,20 @@ def main():
 
     if args.version:
         print("tml Tool Version 0.0.2")
-        return
+        return(0)
 
     if not args.path:
         parser.error("the following arguments are required: path")
-        return
+        return(-1)
 
     if not os.path.exists(args.path):
         print(f"Error: {args.path} does not exist.")
-        return
+        return(-1)
 
     if os.path.isfile(args.path) and args.path.endswith('.txt'):
-        create_html_from_txt(args.path, args.lang, args.output)
+        create_html_from_txt(args.path, args.output)
     elif os.path.isfile(args.path) and args.path.endswith('.md'):
-        create_html_from_md(args.path, args.lang, args.output)
+        create_html_from_md(args.path, args.output)
     elif os.path.isdir(args.path):
         if os.path.exists(args.output):
             shutil.rmtree(args.output)
@@ -149,7 +149,12 @@ def main():
                      create_html_from_txt(os.path.join(root, file), args.output)  # pass output directory here
                 elif file.endswith('.md'):
                      create_html_from_md(os.path.join(root, file), args.output)
-         
+
+ except Exception as e:
+    print(f"An unexpected error occurred: {e}")
+    return(-1)  # Here sys is already defined by the import statement at the top
+
+ return(0)  # If no error occurs, exit with code 0              
 
 
 
