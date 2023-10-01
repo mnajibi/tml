@@ -4,6 +4,7 @@ import argparse
 import os
 import shutil
 import re
+import tomli
 
 def process_file_content(content):
     lines = content.split("\n")
@@ -120,13 +121,44 @@ def main():
     parser.add_argument('--version', '-v', action='store_true', help='print the tool\'s name and version')
     parser.add_argument('--output', '-o', default='./tml/examples', help='Specify a different output directory')
     parser.add_argument('--lang', '-l', default='en-CA', help='Specify the language for the lang attribute in the HTML document')
+    parser.add_argument('--config', '-c', help='Specify a different config file')
 
  
 
     args = parser.parse_args()
 
+
+    if args.config:
+        try:
+            with open(args.config, "rb") as f:
+                default_values = {
+                    'path': None,
+                    'output': './tml/examples',
+                    'lang': 'en-CA',
+                    'version': False
+                }
+                
+                toml_dict = tomli.load(f)
+                
+                # Convert the dict to a Namespace object 
+                args = argparse.Namespace(**toml_dict)
+
+                # Set any missing args to their default values
+                for key, value in default_values.items():
+                    setattr(args, key, getattr(args, key, value))
+        except tomli.TOMLDecodeError:
+            print(f"Error: {args.config} is not a valid config TOML file.")
+            return(-1)
+        except FileNotFoundError:
+            print(f"Error: {args.config} does not exist.")
+            return(-1)
+        except IsADirectoryError:
+            print(f"Error: {args.config} is a directory. Must provide path to config file.")
+            return(-1)
+
+
     if args.version:
-        print("tml Tool Version 0.0.2")
+        print("tml Tool Version 0.0.3")
         return(0)
 
     if not args.path:
@@ -147,9 +179,9 @@ def main():
         for root, dirs, files in os.walk(args.path):
             for file in files:
                 if file.endswith('.txt'):
-                     create_html_from_txt(os.path.join(root, file), args.output)  # pass output directory here
+                     create_html_from_txt(os.path.join(root, file), args.lang, args.output)  # pass output directory here
                 elif file.endswith('.md'):
-                     create_html_from_md(os.path.join(root, file), args.output)
+                     create_html_from_md(os.path.join(root, file), args.lang, args.output)
 
  except Exception as e:
     print(f"An unexpected error occurred: {e}")

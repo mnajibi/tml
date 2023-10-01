@@ -1,0 +1,4 @@
+path = "./examples"
+output = "./build"
+lang = "fr"
+version = false
