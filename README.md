@@ -54,6 +54,7 @@ To specify a different output directory:
 | `--version` or `-v` | Display the tool's version. |
 | `path` | Specify the path to a `.txt` or `.md` file or a directory containing multiple .txt files. If a directory is provided, `tml` will recursively process all `.txt` or `.md` files within. |
 | `--output` or `-o` | Specify a custom output directory. The tool will create the directory if it does not exist. |
+| `--config` or `-c` | Specify a custom `TOML` based config file where all the above flags and their values can be passed instead of passing them through command line input which are ignored if passed along with this flag.  |
 
 ## Features
 
