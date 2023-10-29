@@ -11,3 +11,8 @@ This is a sample markdown file.
 
 ```python
 print("Hello, World!")
+
+### Links
+
+[Correct Link to Example](https://www.openai.com)
+[Broken Link to Example](https://www.example-brokenlink.com)

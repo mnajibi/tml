@@ -1,5 +1,6 @@
 import os
 import re
+from  markdown_link_replacer import replace_links
 
 class TxtConverter:
  @staticmethod
@@ -15,9 +16,15 @@ class TxtConverter:
     html_paragraphs = [f"<p>{p.strip()}</p>" for p in body_paragraphs if p.strip()]
     return title, "\n".join(html_paragraphs)
  @staticmethod
- def create_html_from_txt(filepath, lang='en-CA', output_dir='./html/examples'):
+ def create_html_from_txt(filepath, content=None, lang='en-CA', output_dir='./html/examples'):
         with open(filepath, 'r') as f:
             content = f.read()
+
+        # Parse and replace markdown links with valid ones
+        content, broken_links = replace_links(filepath, content, is_markdown=False)
+
+        if broken_links:
+            print(f"Broken links found in {filepath}: {broken_links}")
 
         title, body_content = TxtConverter.process_file_content(content)
         title_element = title if title else os.path.basename(filepath)
@@ -43,11 +50,24 @@ class TxtConverter:
 
 class MdConverter:
  @staticmethod
- def create_html_from_md(filepath, lang='en-CA' , output_dir='./html/examples'):
+ def create_html_from_md(filepath, content=None, lang='en-CA' , output_dir='./html/examples'):
     os.makedirs(output_dir, exist_ok=True)
 
-    with open(filepath, 'r', encoding='utf-8') as md_file:
-        markdown_content = md_file.read()
+    # with open(filepath, 'r', encoding='utf-8') as md_file:
+    #     markdown_content = md_file.read()
+
+    if content is None:
+        with open(filepath, 'r', encoding='utf-8') as md_file:
+            markdown_content = md_file.read()
+    else:
+        markdown_content = content
+
+    # Use your functions to replace and validate markdown links
+        content, broken_links = replace_links(filepath, content, is_markdown=True)
+
+    # Here, you can handle `broken_links` if you wish, for example logging them
+        if broken_links:
+            print(f"Broken links found in {filepath}: {', '.join(broken_links)}")
 
     lines = markdown_content.split('\n')
     html_body_content = ""

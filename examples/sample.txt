@@ -1,5 +1,7 @@
-This is the first paragraph.
+This is a simple text file with a couple of links.
 
-This is the second paragraph.
+Here's a valid link: https://www.openai.com
 
-This is Third Paragraph.
+A potentially broken link: https://www.example.nonexistentdomain
+
+End of the file.
