@@ -64,6 +64,7 @@ To specify a different output directory:
 * 📁 Can output to a custom directory or default to `tml/examples`.
 * 🔄 Overwrites existing output directory content to ensure it contains only the most recent outputs.
 * 🎉 Extracts title from the text file if present. The title is identified as the first line followed by two blank lines.
+* 🔗 **NEW!** Validates and processes links for both TXT and MD formats, marking broken links distinctly.
 
 ## Contributing
 
