@@ -11,7 +11,7 @@ We love your input! We want to make contributing to this project as easy and tra
 
 ## Getting Started
 
-### Installation for Development
+## Installation for Development
 
 ```bash
 git clone https://github.com/mnajibi/tml.git
@@ -20,7 +20,7 @@ chmod +x main.py
 ```
 
 
-### Development and Testing
+## Development and Testing
 
 Before sending a pull request, please make sure the following is done:
 
@@ -38,6 +38,33 @@ $ git commit -m "A brief summary of the commit
 > A paragraph describing what changed and its impact."
 ```
 
+## Code Style and Formatting
+
+This project enforces a consistent code style provided by Black, the uncompromising Python code formatter. Make sure you run Black before committing your code. You can install it and format code as follows:
+
+### Installing Black
+
+```bash
+pip install black
+```
+
+### Formatting Code with Black
+
+Run Black to format your code:
+
+```bash
+black .
+```
+Commit your changes after formatting:
+```bash
+git add .
+git commit -m "Formatted with Black"
+```
+
+Check if your code conforms to Black's style:
+```bash
+black --check .
+```
 
 ### Submitting changes
 
