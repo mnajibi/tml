@@ -1,4 +1,3 @@
-
 # Contributing to tml - Text to HTML Converter
 
 We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
@@ -19,6 +18,21 @@ cd tml
 chmod +x main.py
 ```
 
+## Setting Up Your Development Environment
+
+### Editor Configuration
+
+For a smooth development experience, we recommend setting up your editor to automatically format and lint your code. This helps catch issues early and ensures consistency across the codebase. This project includes configuration files that support Visual Studio Code (VSCode) out of the box.
+
+To set up your VSCode editor:
+
+- Install the following extensions:
+
+* Python
+* Prettier
+* Flake8
+
+- The .vscode/settings.json file in the project root contains all the necessary configurations. Open the project with VSCode, and these settings will automatically apply.
 
 ## Development and Testing
 
@@ -31,7 +45,8 @@ Before sending a pull request, please make sure the following is done:
 
 When you're ready to create a pull request, be sure to:
 
-+ Write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes should look like this:
+- Write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes should look like this:
+
 ```bash
 $ git commit -m "A brief summary of the commit
 >
@@ -55,13 +70,16 @@ Run Black to format your code:
 ```bash
 black .
 ```
+
 Commit your changes after formatting:
+
 ```bash
 git add .
 git commit -m "Formatted with Black"
 ```
 
 Check if your code conforms to Black's style:
+
 ```bash
 black --check .
 ```
@@ -77,14 +95,17 @@ pip install flake8
 ```
 
 ## Running Flake8
+
 To check your code for errors and style issues:
 
 ```bash
 flake8 path/to/your/code/
 ```
+
 If Flake8 points out any issues, try to resolve them to maintain the code quality. Some issues can be ignored if they are not critical or if they have been agreed upon by the maintainers (see .flake8 configuration file).
 
 ### Flake8 Configuration
+
 The project has a `.flake8` configuration file which you can find at the root of the repository. If there are rules that we have agreed to ignore as a project, they will be listed there.
 
 ### Submitting changes
