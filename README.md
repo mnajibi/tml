@@ -4,20 +4,6 @@
 
 `tml` is a simple command-line tool that converts `.txt` and `.md` files into `.html` format. The tool automatically wraps paragraphs from the input `.txt` or `.md` file in `<p>...</p>` or `h1, h2, h3` tags respectively in the resulting `.html` file.
 
-## Installation
-
-To install `tml`, simply clone this repository to your local machine.
-
-```
-git clone https://github.com/mnajibi/tml.git
-cd tml
-```
-
-Ensure `main.py is` executable:
-
-```
-chmod +x main.py
-```
 ## Usage
 
 By default, if no output directory is specified, the `.html` files will be saved inside the `tml/examples` directory.
@@ -68,7 +54,7 @@ To specify a different output directory:
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
+For information on contributing to tml, such as setting up the environment and development practices, please read [CONTRIBUTING.md](https://github.com/mnajibi/tml/blob/lab7/CONTRIBUTING.md#contributingmd).
 
 ## License
 
