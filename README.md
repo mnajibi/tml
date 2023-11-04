@@ -54,7 +54,7 @@ To specify a different output directory:
 
 ## Contributing
 
-For information on contributing to tml, such as setting up the environment and development practices, please read [CONTRIBUTING.md]().
+For information on contributing to tml, such as setting up the environment and development practices, please read [CONTRIBUTING.md](https://github.com/mnajibi/tml/blob/lab7/CONTRIBUTING.md#contributingmd).
 
 ## License
 

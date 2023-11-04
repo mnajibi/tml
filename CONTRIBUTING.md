@@ -1,6 +1,3 @@
-
-### CONTRIBUTING.md:
-
 ```markdown
 # Contributing to tml - Text to HTML Converter
 
