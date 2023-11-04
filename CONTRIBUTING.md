@@ -66,6 +66,27 @@ Check if your code conforms to Black's style:
 black --check .
 ```
 
+### Using the Linter (Flake8)
+
+This project also enforces good code practices and adheres to PEP 8 style guidelines using Flake8. To ensure your code is clean and follows the project's coding standards, you should run Flake8 before committing your changes.
+
+#### Installing Flake8
+
+```bash
+pip install flake8
+```
+
+## Running Flake8
+To check your code for errors and style issues:
+
+```bash
+flake8 path/to/your/code/
+```
+If Flake8 points out any issues, try to resolve them to maintain the code quality. Some issues can be ignored if they are not critical or if they have been agreed upon by the maintainers (see .flake8 configuration file).
+
+### Flake8 Configuration
+The project has a `.flake8` configuration file which you can find at the root of the repository. If there are rules that we have agreed to ignore as a project, they will be listed there.
+
 ### Submitting changes
 
 Please send a GitHub Pull Request to tml with a clear list of what you've done (read more about pull requests). When you send a pull request, we will love you forever if you include tests. We can always use more test coverage. Please make sure all of your commits are atomic (one feature per commit).
