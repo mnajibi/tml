@@ -5,10 +5,12 @@ import tomli
 def get_args():
     parser = argparse.ArgumentParser(description="Process .txt and .md files to .html")
     parser.add_argument(
-        "path", nargs="?", help="path to the file or folder to be processed"
+        "path", nargs="?", 
+        help="path to the file or folder to be processed"
     )
     parser.add_argument(
-        "--version", "-v", action="store_true", help="print the tool's name and version"
+        "--version", "-v", action="store_true", 
+        help="print the tool's name and version"
     )
     parser.add_argument(
         "--output",
@@ -22,7 +24,10 @@ def get_args():
         default="en-CA",
         help="Specify the language for the lang attribute in the HTML document",
     )
-    parser.add_argument("--config", "-c", help="Specify a different config file")
+    parser.add_argument(
+        "--config", "-c", 
+        help="Specify a different config file"
+    )
 
     args = parser.parse_args()
 
