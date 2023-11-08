@@ -1,6 +1,6 @@
 import os
 import re
-from markdown_link_replacer import replace_links
+from .markdown_link_replacer import replace_links
 
 
 class TxtConverter:
@@ -14,9 +14,7 @@ class TxtConverter:
             title = None
             body_paragraphs = re.split(r"\r?\n\r?\n", content)
 
-        html_paragraphs = [
-           f"<p>{p.strip()}</p>" for p in body_paragraphs if p.strip()
-        ]
+        html_paragraphs = [f"<p>{p.strip()}</p>" for p in body_paragraphs if p.strip()]
 
         return title, "\n".join(html_paragraphs)
 
@@ -38,19 +36,19 @@ class TxtConverter:
         h1_element = f"<h1>{title}</h1>\n" if title else ""
 
         html_content = (
-             f"<!DOCTYPE html>\n"
-             f"<html lang=\"{lang}\">\n"
-             f"<head>\n"
-             f"  <meta charset=\"utf-8\">\n"
-             f"  <title>{title_element}</title>\n"
-             f"  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
-             f"  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/water.css@2/out/water.css\"/>\n"
-             f"</head>\n"
-             f"<body>\n"
-             f"  {h1_element}{body_content}\n"
-             f"</body>\n"
-             f"</html>"
-           )
+            f"<!DOCTYPE html>\n"
+            f'<html lang="{lang}">\n'
+            f"<head>\n"
+            f'  <meta charset="utf-8">\n'
+            f"  <title>{title_element}</title>\n"
+            f'  <meta name="viewport" content="width=device-width, initial-scale=1">\n'
+            f'  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"/>\n'
+            f"</head>\n"
+            f"<body>\n"
+            f"  {h1_element}{body_content}\n"
+            f"</body>\n"
+            f"</html>"
+        )
 
         os.makedirs(output_dir, exist_ok=True)
         output_file = os.path.join(

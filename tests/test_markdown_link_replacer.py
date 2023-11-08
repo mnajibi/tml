@@ -2,10 +2,10 @@
 import pytest
 
 
-from markdown_link_replacer import replace_links
+from ..markdown_link_replacer import replace_links
 
 
-# Here's an example of a pytest function to test replace_links with good values
+# pytest function to test replace_links with good values
 def test_replace_links_good():
     # setup input data and expected output
     input_data = "Test content with a [link](https://www.google.com)"
@@ -16,6 +16,3 @@ def test_replace_links_good():
     assert (
         output == expected_output
     ), "replace_links did not return expected HTML content"
-
-
-# Add more tests below for different conditions, such as bad values, null inputs, etc.

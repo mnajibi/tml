@@ -1,6 +1,6 @@
 import os
 import pytest
-from converter import TxtConverter, MdConverter
+from ..converter import TxtConverter, MdConverter
 
 
 @pytest.fixture
