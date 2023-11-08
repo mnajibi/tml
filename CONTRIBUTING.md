@@ -36,6 +36,32 @@ To set up your VSCode editor:
 
 ## Development and Testing
 
+Testing is a crucial part of development. To ensure that your feature or bug fix works correctly and does not introduce new issues, please write tests for your code. This section guides you through the process.
+
+### Writing Tests
+
+When writing tests, please ensure that:
+
+- Tests are placed in the `tests/` directory.
+- The test file names follow the pattern `test_*.py`.
+- Use descriptive test function names that clearly state what they aim to test, starting with `test_`.
+
+### Running Tests
+
+To run tests, navigate to the project root directory and use pytest:
+
+```bash
+pytest
+```
+
+Ensure your tests pass and, if possible, increase the coverage with your new tests. Please ensure that your tests are specific, have assertive checks, and cover a range of scenarios, including edge cases.
+
+### Testing Conventions
+
+- Group tests logically within your test files or add new files if testing unrepresented functionality.
+- Use fixtures to manage test setup and teardown if needed.
+- Mock external dependencies where applicable to ensure tests remain fast and reliable.
+
 Before sending a pull request, please make sure the following is done:
 
 - Fork the repo and create your branch from main.
