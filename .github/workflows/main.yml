@@ -13,21 +13,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.8'  # Replace this with the version of Python you're using
 
     - name: Install dependencies
-  run: |
-    python -m pip install --upgrade pip
-    pip install pytest tomli requests  # Add any other dependencies you need
-    # If you have a requirements.txt file, uncomment and use the next line instead
-    # pip install -r requirements.txt
-
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest tomli requests  # Add any other dependencies you need
+        # If you have a requirements.txt file, uncomment and use the next line instead
+        # pip install -r requirements.txt
 
     - name: Run tests
       run: |
         pytest
-
-
