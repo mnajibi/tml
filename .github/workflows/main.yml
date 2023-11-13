@@ -29,3 +29,10 @@ jobs:
     - name: Run tests
       run: |
         pytest
+        
+- name: Install dependencies
+  run: |
+    python -m pip install --upgrade pip
+    pip install pytest tomli requests  # Add any other dependencies your project requires
+    # If you have a requirements.txt file, uncomment the next line
+    # pip install -r requirements.txt
