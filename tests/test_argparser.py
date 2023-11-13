@@ -32,8 +32,7 @@ def test_get_args_with_path(mock_argv):
 def test_get_args_with_version(mock_argv):
     mock_argv(["main.py", "--version"])
     args = get_args()
-    ##assert args.version is True
-    assert args.version is False  # Intentionally break this assertion
+    assert args.version is True
 
 
 def test_get_args_with_output(mock_argv):
