@@ -2,9 +2,9 @@
 # /usr/bin/env python3
 import os
 import shutil
-from converter import TxtConverter, MdConverter
-from argparser import get_args
-from markdown_link_replacer import replace_links
+from src.converter import TxtConverter, MdConverter
+from src.argparser import get_args
+from src.markdown_link_replacer import replace_links
 
 
 def process_file(file_path, lang, output_dir):
