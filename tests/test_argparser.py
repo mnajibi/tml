@@ -1,6 +1,6 @@
 # test_argparser.py
 import pytest
-from ..argparser import get_args
+from src.argparser import get_args
 
 
 # This is necessary to replace argv for the tests
