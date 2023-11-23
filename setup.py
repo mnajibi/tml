@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="tml",
+    name="tml_mnajibi",
     version="0.1.0",
     author="Maryam Najibi",
     author_email="maryamnajibi55@gmail.com",  # Replace with your actual email
